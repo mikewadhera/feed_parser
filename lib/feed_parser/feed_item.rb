@@ -6,7 +6,7 @@ class FeedParser
 
     def initialize(item)
       @guid = item.xpath(Dsl[@type][:item_guid]).text
-      @title = item.xpath(Dsl[@type][:item_title]).text
+      @title = item.xpath(Dsl[@type][:item_title]).first.text
       @published = parse_datetime(item.xpath(Dsl[@type][:item_published]).text)
       @author = item.xpath(Dsl[@type][:item_author]).text
       @description = possible_html_content(item.xpath(Dsl[@type][:item_description]))
